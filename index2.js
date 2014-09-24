@@ -1,4 +1,4 @@
-	function injectContent(content, section) {
+function injectContent(content, section) {
 		$(section).html(content);
 	}
 
