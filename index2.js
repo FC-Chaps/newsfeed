@@ -7,11 +7,8 @@ function formatContent(content, section) {
 		trim = content.response.results;
 		htmlContent = [];
 	for (i=0; i<5; i += 1) {
-		htmlContent += "<a href='";
-		htmlContent += trim[i].webUrl;
-		htmlContent += "'>";
-		htmlContent += trim[i].webTitle;
-		htmlContent += "</a><br>";
+		htmlContent = htmlContent + "<a class= 'news-items' href='" + trim[i].webUrl;
+		htmlContent = htmlContent + "'>" + trim[i].webTitle + "</a><br>";
 	}
 	injectContent(htmlContent, section);
 }
@@ -19,8 +16,7 @@ function formatContent(content, section) {
 function getContent(link, section) {
 	$.ajax({
 		url: link,
-		success: function (data) {
-			formatContent(data, section)
+		success: formatContent(data, section)
 		}
 	});
 }
