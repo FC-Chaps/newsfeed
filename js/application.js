@@ -7,14 +7,11 @@ function formatContent(content, section) {
 		trim = content.response.results;
 		htmlContent = [];
 	for (i=0; i<5; i += 1) {
-		htmlContent = htmlContent + "<a class= 'news-items' href='" + trim[i].webUrl;
-		htmlContent = htmlContent + "'>" + trim[i].webTitle + "</a><br>";
+		htmlContent = htmlContent + "<h3><a class= 'news-items' href='" + trim[i].webUrl;
+		htmlContent = htmlContent + "'>" + trim[i].webTitle + "</a></h3><br>";
 	}
 	injectContent(htmlContent, section);
 }
-
-
-
 
 function getContent(link, section) {
 	$.ajax({
@@ -35,14 +32,14 @@ var main = function main() {
 		travelUrl = "http://content.guardianapis.com/search?api-key=test&show-fields=travel&show-elements=travel&order-by=newest&q=travel",
 		footballUrl = "http://content.guardianapis.com/search?api-key=test&show-fields=football&show-elements=football&q=football";
 
-	getContent(ukUrl, "#uk-news"); //Load page on current
+	getContent(ukUrl, "#news"); //Load page on current
 
-	$("#uk-btn").click(sectionChange(ukUrl, "#uk-news"));
-	$("#travel-btn").click(sectionChange(travelUrl, "#travel-news"));
-	$("#football-btn").click(sectionChange(footballUrl, "#football-news"));
+	$(".zone-news").click(sectionChange(ukUrl, "#news"));
+	$(".zone-travel").click(sectionChange(travelUrl, "#travel"));
+	$(".zone-football").click(sectionChange(footballUrl, "#football"));
 
 
-	$("#tabs").tabs(); //create tabs
+	//$("#tabs").tabs(); //create tabs
 
 };
 
