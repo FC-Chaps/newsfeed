@@ -13,10 +13,14 @@ function formatContent(content, section) {
 	injectContent(htmlContent, section);
 }
 
+
+
+
 function getContent(link, section) {
 	$.ajax({
 		url: link,
-		success: formatContent(data, section)
+		success: function(data){
+			formatContent(data, section)
 		}
 	});
 }
