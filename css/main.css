@@ -1,0 +1,51 @@
+/*============================================*
+Main styling for the Chaps Guardian API Project
+*=============================================*/
+
+body {
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
+body, h1, h2, h3, h4, h5, h6, p {
+	/* font-family: 'Lato', sans-serif; */
+	font-weight: 300;
+}
+h1, h4 {
+	font-weight: 400;
+}
+.btn {
+	border-radius: 0;
+	border:none;
+	text-shadow: 0;
+	width: 100%;
+	margin-top: 10%;
+	padding:2%;
+}
+
+	/* Undo Bootstrap list link stuff */
+	.nav-tabs>li>a {
+		margin-right: 0;
+	}
+	.nav-tabs>li.active>a {
+		border-color:transparent;
+	}
+	.nav-tabs>li.active>a:hover {
+		border-color:transparent;
+	}
+
+	/* Clean up Guardian styles */
+	.nav-sections {
+		margin-bottom: 15px;
+	}
+.tab-content {
+	padding: 2%;
+}
+
+
+
+@media only screen and (max-width : 600px) {
+	code {
+		font-size: 0.7em;
+	}
+}
