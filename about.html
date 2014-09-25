@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Meta Data -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width initial-scale=1" />
+	<title>Chaps News</title>
+	
+	<!-- Google Font -->
+	<link href="http://fonts.googleapis.com/css?family=Lato:100,300,400" rel='stylesheet' type='text/css'>
+
+	<!-- Style sheets -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+
+</head>
+<body style="padding:3% 0; background-color:#ffffed;">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-2 col-xs-offset-1 col-sm-offset-2">
+				<a href="index.html">
+					<button type="button" class="btn btn-warning" id="topOfPage"><span class="glyphicon glyphicon-circle-arrow-left"></span> Back to the demo</button>
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+				<h1>Using the Guardian newsfeed API</h1>
+				<p>The Guradian Content API allows developers like you and me to select and collect Guardian content from their database of articles and media. This guide will walk you through the steps the Chaps took to getting from total-noob-scrub to API developer.</p>
+				<hr>
+				<h4>Firstly:</h4>
+				<ol>
+					<li><a href="http://guardian.mashery.com/" target="_blank">Get an access key</a> (Actually totally optional)</li>
+				<p><em>This is done easily enough via an online application through the Guardian website.</em></p>
+					<li>Include your CDN to the jquery library</li>
+				</ol>
+				<p><em>This allows us to write Ajax functions and manipulate the DOM to display our results</em></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+				<h4>Get familiar</h4>
+				<p>Put a function like this (but in a slightly more readable format):</p>
+				<blockquote style="overflow: auto;"><p><code>$( document ).ready(function() {<br><br>$.ajax({<br>
+			    url: "http://api.openweathermap.org/data/2.5/weather?q=london",
+			    <br>success: function( data ) {
+			        <br>$( "#weather" ).html( data.name + " is enjoying " + data.weather[0].description);
+			    }
+				});<br><br>});</code></p></blockquote>
+				<p>..into a div with the respective ID (in this case "weather").</p>
+				<p>In this simple form, div#weather will now contain the 'name' of the data received, followed by the string " is enjoying " and the description of the first weather result pulled from the Guardian database. This function will be executed at the instance that the document is loaded in the browser.</p>
+				<p>Notice the url in the function - this is where the data is being retreived from. Visiting that URL will reveal the raw data that is being used and manipulated by the function.</p>
+				<p>And in particular focus on this part: <code>"weather":[{"id":801,"main":"Clouds","description":"few clouds","icon":"02d"}],</code> to figure out how the function calls the correct data.</p>
+				<p style="font-weight:400;">Now play around with that function. Break it, rebuild it, do what you have to do to ensure you know what each part does.</p>
+				<hr>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+				<h4>Customize!</h4>
+				<p>For this project we used the <a href="http://explorer.content.guardianapis.com/search?api-key=test" target="_blank">Guardian content API</a></p>
+				<p>On this site you should enter your API key that was generated earlier, and then filter the results you see by whichever field you so desire. I entered "football" into the search filter and ordered by newest.</p>
+				<p>This will generate a new URL for you to use in your function, in my case it gave me: <code>http://content.guardianapis.com/search?api-key=test&q=football</code></p>
+				<p>The next step is to identify which part of the data the above URL points to you want to display on the front end. For this step it is easiest to refer again to the content API and read through the structure of the result that's given at the bottom of the page.</p>
+				<p>For this example, it's <code>data.response.results[0].webTitle</code></p>
+				<p style="font-weight:400;">Now you should have the title of a news article in you div. Next comes building out the functionality of the API.</p>
+			</div>
+		</div>
+
+
+		<a href="#topOfPage"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-circle-arrow-up"></span> Back to top</button></a>
+	
+	</div>
+
+	<!-- JavaScript -->
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/application.js"></script>
+</body>
+</html>
